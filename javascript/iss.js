@@ -22,9 +22,6 @@ function moveISS () {
 
 
 
-
-
-
 L.terminator().addTo(map);
 
 
