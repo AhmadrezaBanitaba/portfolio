@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="javascript/calculator.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+
+ <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script>
+<script src='https://unpkg.com/leaflet.gridlayer.googlemutant@latest/Leaflet.GoogleMutant.js'></script>
+
+
+<script src="javascript/L.Terminator.js"></script>
+ <script  src="javascript/peopleinspace.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+      <script>
+  // Initialize Firebase
+      var config = {
+      apiKey: "AIzaSyATImJcNpEV5fgYSMuHfUBBTj2mlLZgB4M",
+      authDomain: "webapp1-a61f0.firebaseapp.com",  
+      databaseURL: "https://webapp1-a61f0.firebaseio.com",
+      projectId: "webapp1-a61f0",
+      storageBucket: "webapp1-a61f0.appspot.com",
+      messagingSenderId: "735077960727"
+    };
+    firebase.initializeApp(config);
+      </script>
+</head>
+<body>
+  
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container"> 
+     <a class="navbar-brand" href="index.html">Start</a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about.html">About</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" href="services.html">Services</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" href="contact.html">Contact</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" href="blog.html">Blog</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" href="cooljavascript.html">javascript</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" href="space.html">Space</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" href="products.html">Products</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" href="gallery.html">Gallery</a>
+     </li>
+     <li class="nav-item">
+  <div class="dropdown dropleft">
+
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    sign in
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <div class="dropdown-item"><button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+  Sign Up
+</button>
+</div>
+
+    <div class="dropdown-item"><button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#example">
+  Sign In
+</button></div>
+
+
+    <div class="dropdown-item"><button type="button" class="btn btn-primary btn-block" onclick="signOut()">Sign Out</button></div>
+</div>
+
+  </div>
+</ul>
+</div>
+</nav>
+
+<br>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">It`s easy to sign up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="button" class="btn btn-primary" onclick="adduser()">Add User</button>
+
+    </div>
+  </div>
+</form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="example" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signin">Sign In</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="email1" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="password1" placeholder="Password">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+    <button type="button" class="btn btn-primary" onclick="signIn()">Sign In</button>
+
+    </div>
+  </div>
+</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<br>
+
+<div class="container" id="scorekeeper">
+  <p>set a number up to 5, then click on player one and two.</p>
+<h1><span id="p1Display">0</span> to <span id="p2Display">0</span> </h1>
+<p>Playing to:  <span>5</span></p>
+<input type="number">
+<button type="button" class="btn btn-outline-primary" id="p1">Player One</button>
+<button type="button" class="btn btn-outline-primary" id="p2">Player Two</button>
+<button type="button" class="btn btn-outline-primary" id="reset">Reset</button>
+
+</div>
+
+
+<br>
+<br>
+
+<div class="container" id="calculator">
+  <p>calculator</p>
+    <input type="text" id="x" value="">
+  <select name="math" id="math">
+    <option>+</option>
+    <option>-</option>
+    <option>*</option>
+    <option>÷</option>
+  </select>
+  <input type="text" id="y" value="">
+  <button type="button" class="btn btn-outline-primary" onclick="math()">Calculate</button>
+  <input type="text" id="outPut" value="">
+
+</div>
+
+<br>
+<br>
+
+
+
+<div class="container" id="spacestation">
+  <p>International Space Station tracker built using <a href="http://open-notify.org/">OpenNotify</a></p>
+<p id="isstime">WHERE IS ISS?</p>
+<br>
+<div id="map"> </div>
+<script src="javascript/iss.js"> </script>
+<br>
+    <p id="howmany">There are currently <span id="spacepeeps">?</span> humans in space. They are:
+    <ul id="astronames"> </ul>
+    
+</div>
+
+
+
+<br>
+
+
+
+
+<br>
+<br>
+
+
+
+
+<footer class="footer">
+      <div class="container">
+        <span class="text-muted">All rights reserved © 2019</span>
+      </div>
+    </footer>
+
+
+
+
+<script src="javascript/scoreKeeper.js"></script>
+
+</body>
+
+</html>
